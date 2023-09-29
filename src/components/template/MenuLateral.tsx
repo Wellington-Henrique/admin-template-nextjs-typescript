@@ -2,11 +2,11 @@ import React from 'react'
 import MenuItem from './MenuItem'
 import Logo from './Logo'
 
-import { IconeCasa, IconeAjuste, IconeSino } from '../icons'
+import { IconeCasa, IconeAjuste, IconeSino, IconeSair } from '../icons'
 
 export default function MenuLateral() {
   return (
-    <aside>
+    <aside className='flex flex-col'>
       <div className={`
         flex flex-col items-center justify-center
         bg-gradient-to-r from-indigo-500 to-purple-800
@@ -15,7 +15,8 @@ export default function MenuLateral() {
         <Logo/>
       </div>
 
-      <ul>
+      <ul className='
+        flex-grow'>
         <MenuItem
           url="/"
           texto="Início"
@@ -32,6 +33,19 @@ export default function MenuLateral() {
           url="/notificacoes"
           texto="Notificações"
           icone={IconeSino}
+        />
+      </ul>
+
+      <ul>
+        <MenuItem
+          texto="Sair"
+          icone={IconeSair}
+          className={`
+          text-red-600
+          hover:bg-red-400
+          hover:text-white
+          `}
+          onClick={() => console.log("logout")}
         />
       </ul>
     </aside>
