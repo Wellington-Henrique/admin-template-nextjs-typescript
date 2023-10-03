@@ -1,4 +1,5 @@
 import React from 'react'
+import useAppData from '@/data/hook/useAppData'
 
 import MenuLateral from './MenuLateral'
 import Cabecalho from './Cabecalho'
@@ -11,8 +12,10 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
+  const { tema, alternarTema } = useAppData();
+
   return (
-    <div className={`dark flex h-screen w-screen `}>
+    <div className={`${tema} flex h-screen w-screen `}>
         <MenuLateral/>
         <div className={`
           flex flex-col w-full p-7 

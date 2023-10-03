@@ -9,7 +9,7 @@ export default function Notificacoes() {
       titulo="Notificações"
       subtitulo="Aqui você irá gerenciar as suas notificações!"
     >
-      <h3>{ctx.nome}</h3>
+      <button onClick={ctx.alternarTema}>Alternar tema</button>
     </Layout>
   )
 }
