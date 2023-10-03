@@ -12,7 +12,7 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
-  const { tema, alternarTema } = useAppData();
+  const { tema } = useAppData();
 
   return (
     <div className={`${tema} flex h-screen w-screen `}>
