@@ -3,6 +3,7 @@ import React from 'react'
 import Titulo from './Titulo'
 import { BotaoAlternarTema } from './BotaoAlternarTema'
 import useAppData from '@/data/hook/useAppData'
+import AvatarUsuario from './AvatarUsuario'
 
 interface CabecalhoProps {
     titulo: string,
@@ -15,8 +16,9 @@ export default function Cabecalho(props: CabecalhoProps) {
   return (
     <div className='flex'>
         <Titulo {...props}/>
-        <div className='flex flex-grow justify-end'>
+        <div className='flex flex-grow justify-end items-center'>
           <BotaoAlternarTema tema={tema} alternarTema={alternarTema}/>
+          <AvatarUsuario className='ml-3'/>
         </div>
     </div>
   )
