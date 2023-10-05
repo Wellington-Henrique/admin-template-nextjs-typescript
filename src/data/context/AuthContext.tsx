@@ -8,6 +8,7 @@ import Cookies from 'js-cookie'
 
 interface AuthContextProps {
     usuario?: Usuario
+    carregando: boolean
     loginGoogle?: () => Promise<void>
     logout?: () => Promise<void>
 }
@@ -44,6 +45,8 @@ export function AuthProvider(props) {
         if (Cookies.get('admin-template-cod3r-auth')) {
             const cancelar = firebase.auth().onIdTokenChanged(configurarSessao);
             return () => cancelar()
+        } else {
+            setCarregando(false)
         }
     }, [])
 
@@ -52,7 +55,7 @@ export function AuthProvider(props) {
             const usuario = await usuarioNormalizado(usuarioFirebase)
             setUsuario(usuario);
             gerenciarCookie(true);
-            setCarregando(true);
+            setCarregando(false);
             return usuario.email;
         } else {
             setUsuario(null);
@@ -89,6 +92,7 @@ export function AuthProvider(props) {
     return(
         <AuthContext.Provider value={{
             usuario,
+            carregando,
             loginGoogle,
             logout
         }}>{props.children}</AuthContext.Provider>
